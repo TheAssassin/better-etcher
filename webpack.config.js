@@ -34,6 +34,14 @@ module.exports = {
   },
   externals: [
     (context, request, callback) => {
+      // eslint-disable-next-line lodash/prefer-lodash-method
+      const projectRelativePath = context.replace(`${__dirname}/`, '')
+
+      // We shouldn't rewrite any node_modules import paths
+      if (/^node_modules/i.test(projectRelativePath)) {
+        return callback()
+      }
+
       // We want to keep the SDK code outside the GUI bundle.
       // This piece of code allows us to run the GUI directly
       // on the tree (for testing purposes) or inside a generated
