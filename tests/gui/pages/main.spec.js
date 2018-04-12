@@ -260,8 +260,8 @@ describe('Browser: MainPage', function () {
     let DriveSelectionController
 
     const drivePaths = process.platform === 'win32'
-      ? [ 'E:\\', 'F:\\' ]
-      : [ '/dev/disk1', '/dev/disk2' ]
+      ? [ 'E:\\', 'F:\\', 'G:\\', 'H:\\' ]
+      : [ '/dev/disk1', '/dev/disk2', '/dev/disk3', '/dev/disk4' ]
     const drives = [
       {
         device: drivePaths[0],
@@ -278,6 +278,27 @@ describe('Browser: MainPage', function () {
         size: 987654321,
         displayName: drivePaths[1],
         mountpoints: [ drivePaths[1] ],
+        isSystem: false,
+        isReadOnly: false
+      },
+      {
+        device: drivePaths[2],
+        size: 987654321,
+        displayName: drivePaths[2],
+        mountpoints: [
+          {
+            label: 'Some Drive',
+            path: drivePaths[2]
+          }
+        ],
+        isSystem: false,
+        isReadOnly: false
+      },
+      {
+        device: drivePaths[3],
+        size: 987654321,
+        displayName: drivePaths[3],
+        mountpoints: [],
         isSystem: false,
         isReadOnly: false
       }
@@ -300,6 +321,16 @@ describe('Browser: MainPage', function () {
       it('should return the drive description when there is one drive', function () {
         selectionState.selectDrive(drives[0].device)
         m.chai.expect(DriveSelectionController.getDrivesTitle()).to.equal(drives[0].description)
+      })
+
+      it('should return the drive mountpoint displayName when there is no description', function () {
+        selectionState.selectDrive(drives[2].device)
+        m.chai.expect(DriveSelectionController.getDrivesTitle()).to.equal(drives[2].mountpoints[0].label)
+      })
+
+      it('should return the drive displayName when there is no description or mountpoint', function () {
+        selectionState.selectDrive(drives[3].device)
+        m.chai.expect(DriveSelectionController.getDrivesTitle()).to.equal(drives[3].displayName)
       })
 
       it('should return a consolidated title with quantity when there are multiple drives', function () {
