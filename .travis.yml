@@ -59,12 +59,13 @@ script:
   - ./scripts/ci/build-installers.sh -o $HOST_OS -r $TARGET_ARCH
 
 after_success:
-  - cd dist/out
+  - cd dist
   - ls -lh
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
   # make sure only pushes to rewrite create a new release, otherwise pretend PR and upload to transfer.sh
   - if [ "$TRAVIS_BRANCH" != "rewrite" ]; then export TRAVIS_EVENT_TYPE=pull_request; fi
-  - bash upload.sh *.AppImage*
+  # TODO: fix this dirty hack:
+  - find -type f -iname '*.AppImage*' -print0 | xargs -0 bash upload.sh
 
 notifications:
   email: false
