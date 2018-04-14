@@ -61,7 +61,10 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script: scripts/ci/deploy.sh -o $HOST_OS -r $TARGET_ARCH
+  script:
+    - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
+    - chmod +x upload.sh
+    - ./upload.sh *.AppImage
   on:
     branch: master
 
