@@ -58,15 +58,12 @@ script:
   - ./scripts/ci/test.sh -o $HOST_OS -r $TARGET_ARCH
   - ./scripts/ci/build-installers.sh -o $HOST_OS -r $TARGET_ARCH
 
-deploy:
-  provider: script
-  skip_cleanup: true
-  script:
-    - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
-    - chmod +x upload.sh
-    - ./upload.sh *.AppImage
-  on:
-    branch: master
+after_success:
+  - ls -lh
+  - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
+  # make sure only pushes to rewrite create a new release, otherwise pretend PR and upload to transfer.sh
+  - if [ "$TRAVIS_BRANCH" != "rewrite" ]; then export TRAVIS_EVENT_TYPE=pull_request; fi
+  - bash upload.sh *.AppImage
 
 notifications:
   email: false
