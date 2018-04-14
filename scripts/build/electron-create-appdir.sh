@@ -83,22 +83,18 @@ cp "$ARGV_ICON" "$ARGV_OUTPUT/$APPDIR_ICON_FILENAME.png"
 mkdir -p "$ARGV_OUTPUT/usr/bin"
 cp -rf "$ARGV_PACKAGE"/* "$ARGV_OUTPUT/usr/bin"
 
-APPIMAGES_TAG=6
-APPIMAGES_GITHUB_RAW_BASE_URL=https://raw.githubusercontent.com/probonopd/AppImageKit/$APPIMAGES_TAG
-APPIMAGES_GITHUB_RELEASE_BASE_URL=https://github.com/probonopd/AppImageKit/releases/download/$APPIMAGES_TAG
+APPRUN_GITHUB_RELEASE_BASE_URL=https://github.com/AppImage/AppImageKit/releases/download/continuous/
+APPRUN_PATH="$ARGV_OUTPUT/AppRun"
 
-if [ "$ARGV_ARCHITECTURE" == "x64"  ]; then
-  APPIMAGES_ARCHITECTURE="x86_64"
-  APPRUN_CHECKSUM=28b9c59facd7d0211ef5d825cc00873324cc75163902c48e80e34bf314c910c4
-elif [ "$ARGV_ARCHITECTURE" == "x86"  ]; then
-  APPIMAGES_ARCHITECTURE="i686"
-  APPRUN_CHECKSUM=44a56d8a654891030bab57cee4670550ed550f6c63aa7d82377a25828671088b
+if [ "$ARGV_ARCHITECTURE" == "x64" ]; then
+  APPRUN_ARCHITECTURE="x86_64"
+elif [ "$ARGV_ARCHITECTURE" == "x86" ]; then
+  APPRUN_ARCHITECTURE="i686"
 else
   echo "Invalid architecture: $ARGV_ARCHITECTURE" 1>&2
   exit 1
 fi
 
-./scripts/build/download-tool.sh -x \
-  -u "$APPIMAGES_GITHUB_RELEASE_BASE_URL/AppRun_$APPIMAGES_TAG-$APPIMAGES_ARCHITECTURE" \
-  -c "$APPRUN_CHECKSUM" \
-  -o "$ARGV_OUTPUT/AppRun"
+wget "APPRUN_GITHUB_RELEASE_BASE_URL/appimagetool-$APPRUN_ARCHITECTURE.AppImage" \
+    -O "$APPRUN_PATH"
+chmod +x "$APPRUN_PATH"

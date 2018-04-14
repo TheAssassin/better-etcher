@@ -60,9 +60,9 @@ then
   usage
 fi
 
-if [ "$ARGV_ARCHITECTURE" == "x64"  ]; then
+if [ "$ARGV_ARCHITECTURE" == "x64" ]; then
   APPIMAGETOOL_ARCHITECTURE="x86_64"
-elif [ "$ARGV_ARCHITECTURE" == "x86"  ]; then
+elif [ "$ARGV_ARCHITECTURE" == "x86" ]; then
   APPIMAGETOOL_ARCHITECTURE="i686"
 else
   echo "Invalid architecture: $ARGV_ARCHITECTURE" 1>&2
@@ -70,12 +70,12 @@ else
 fi
 
 APPIMAGETOOL_GITHUB_RELEASE_BASE_URL=https://github.com/AppImage/AppImageKit/releases/download/continuous/
-APPIMAGETOOL_PATH=$ARGV_DOWNLOAD_DIRECTORY/APPIMAGEKIT-$ARGV_ARCHITECTURE.AppImage
-mkdir -p "$ARGV_DOWNLOAD_DIRECTORY"
-./scripts/build/download-tool.sh -x \
-  -u "$APPIMAGETOOL_GITHUB_RELEASE_BASE_URL/appimagetool-APPIMAGETOOL_ARCHITECTURE.AppImage" \
-  -o "$APPIMAGETOOL_PATH"
+APPIMAGETOOL_PATH="$ARGV_DOWNLOAD_DIRECTORY/appimagetool-$ARGV_ARCHITECTURE.AppImage"
+
+wget "$APPIMAGETOOL_GITHUB_RELEASE_BASE_URL/appimagetool-$APPIMAGETOOL_ARCHITECTURE.AppImage" \
+    -O "$APPIMAGETOOL_PATH"
+chmod +x "$APPIMAGETOOL_PATH"
 
 # Generate AppImage
 mkdir -p "$(dirname "$ARGV_OUTPUT")"
-$APPIMAGETOOL_PATH "$ARGV_APPDIR" "$ARGV_OUTPUT"
+"$APPIMAGETOOL_PATH" "$ARGV_APPDIR" "$ARGV_OUTPUT" -u "gh-releases-zsync|TheAssassin|better-etcher|continuous|$ARGV_OUTPUT.zsync"
