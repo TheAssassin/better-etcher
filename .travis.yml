@@ -67,7 +67,7 @@ after_success:
   - if [ "$TRAVIS_BRANCH" != "master" ]; then export TRAVIS_EVENT_TYPE=pull_request; fi
   # TODO: fix this dirty hack:
   # work around permissions issues
-  - find -type f -iname '*etcher*.AppImage*' -print0 | (cd /tmp && xargs -0 bash upload.sh)
+  - find $(pwd) -type f -iname '*etcher*.AppImage*' -print0 | (cd /tmp && xargs -0 bash upload.sh)
 
 notifications:
   email: false
