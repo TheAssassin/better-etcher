@@ -78,4 +78,4 @@ chmod +x "$APPIMAGETOOL_PATH"
 
 # Generate AppImage
 mkdir -p $(dirname "$ARGV_OUTPUT")
-"$APPIMAGETOOL_PATH" "$ARGV_APPDIR" "$ARGV_OUTPUT" -u "gh-releases-zsync|TheAssassin|better-etcher|continuous|etcher*$ARGV_ARCHITECTURE*.AppImage.zsync"
+"$APPIMAGETOOL_PATH" "$ARGV_APPDIR" "$ARGV_OUTPUT" -u "gh-releases-zsync|TheAssassin|better-etcher|continuous|*etcher*$ARGV_ARCHITECTURE*.AppImage.zsync"
