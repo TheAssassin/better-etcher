@@ -95,6 +95,6 @@ else
   exit 1
 fi
 
-curl "APPRUN_GITHUB_RELEASE_BASE_URL/appimagetool-$APPRUN_ARCHITECTURE.AppImage" \
+curl "$APPRUN_GITHUB_RELEASE_BASE_URL/appimagetool-$APPRUN_ARCHITECTURE.AppImage" \
     -o "$APPRUN_PATH"
 chmod +x "$APPRUN_PATH"
