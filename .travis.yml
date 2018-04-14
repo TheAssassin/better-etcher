@@ -65,7 +65,8 @@ after_success:
   # make sure only pushes to rewrite create a new release, otherwise pretend PR and upload to transfer.sh
   - if [ "$TRAVIS_BRANCH" != "rewrite" ]; then export TRAVIS_EVENT_TYPE=pull_request; fi
   # TODO: fix this dirty hack:
-  - find -type f -iname '*.AppImage*' -print0 | xargs -0 bash /tmp/upload.sh
+  - find -type f -iname '*.AppImage*'
+  - bash -xc "find -type f -iname '*.AppImage*' -print0 | xargs -0 bash /tmp/upload.sh"
 
 notifications:
   email: false
