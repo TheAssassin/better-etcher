@@ -73,9 +73,9 @@ APPIMAGETOOL_GITHUB_RELEASE_BASE_URL=https://github.com/AppImage/AppImageKit/rel
 APPIMAGETOOL_PATH="$ARGV_DOWNLOAD_DIRECTORY/appimagetool-$ARGV_ARCHITECTURE.AppImage"
 
 curl "$APPIMAGETOOL_GITHUB_RELEASE_BASE_URL/appimagetool-$APPIMAGETOOL_ARCHITECTURE.AppImage" \
-    -o "$APPIMAGETOOL_PATH"
+    -L -o "$APPIMAGETOOL_PATH"
 chmod +x "$APPIMAGETOOL_PATH"
 
 # Generate AppImage
-mkdir -p "$(dirname "$ARGV_OUTPUT")"
+mkdir -p $(dirname "$ARGV_OUTPUT")
 "$APPIMAGETOOL_PATH" "$ARGV_APPDIR" "$ARGV_OUTPUT" -u "gh-releases-zsync|TheAssassin|better-etcher|continuous|$ARGV_OUTPUT.zsync"
