@@ -59,6 +59,7 @@ script:
   - ./scripts/ci/build-installers.sh -o $HOST_OS -r $TARGET_ARCH
 
 after_success:
+  - cd dist/out
   - ls -lh
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
   # make sure only pushes to rewrite create a new release, otherwise pretend PR and upload to transfer.sh
