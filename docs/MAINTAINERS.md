@@ -30,8 +30,6 @@ Releasing
 - [Publish release draft on GitHub](https://github.com/resin-io/etcher/releases)
 - [Post release note to forums](https://forums.resin.io/c/etcher)
 - [Update the website](https://github.com/resin-io/etcher-homepage)
-- Wait 2-3 hours for analytics (Sentry, Mixpanel) to trickle in and check for elevated error rates, or regressions
-- If regressions arise; pull the release, and release a patched version, else:
 - [Upload deb & rpm packages to Bintray](#uploading-packages-to-bintray)
 - [Upload build artifacts to Amazon S3](#uploading-binaries-to-amazon-s3)
 - Post changelog with `#release-notes` tag on Flowdock
@@ -73,15 +71,6 @@ git push --tags
 - Open a pull request against `master` titled "Release v1.0.0"
 
 ### Generating binaries
-
-**Environment**
-
-Make sure to set the analytics tokens when generating production release binaries:
-
-```bash
-export ANALYTICS_SENTRY_TOKEN="xxxxxx"
-export ANALYTICS_MIXPANEL_TOKEN="xxxxxx"
-```
 
 #### Linux
 

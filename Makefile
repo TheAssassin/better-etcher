@@ -181,22 +181,6 @@ endif
 ELECTRON_BUILDER_OPTIONS = --$(TARGET_ARCH_ELECTRON_BUILDER)
 
 # ---------------------------------------------------------------------
-# Analytics
-# ---------------------------------------------------------------------
-
-ifndef ANALYTICS_SENTRY_TOKEN
-$(warning No Sentry token found (ANALYTICS_SENTRY_TOKEN is not set))
-else
-ELECTRON_BUILDER_OPTIONS += --extraMetadata.analytics.sentry.token=$(ANALYTICS_SENTRY_TOKEN)
-endif
-
-ifndef ANALYTICS_MIXPANEL_TOKEN
-$(warning No Mixpanel token found (ANALYTICS_MIXPANEL_TOKEN is not set))
-else
-ELECTRON_BUILDER_OPTIONS += --extraMetadata.analytics.mixpanel.token=$(ANALYTICS_MIXPANEL_TOKEN)
-endif
-
-# ---------------------------------------------------------------------
 # Rules
 # ---------------------------------------------------------------------
 

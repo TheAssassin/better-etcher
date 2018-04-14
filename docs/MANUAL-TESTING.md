@@ -105,11 +105,3 @@ Unmounting
 - [ ] Disable unmounting and flash an image
 - [ ] Flash an image with a file system that is readable by the host OS, and
   check that is unmounted correctly
-
-Analytics
----------
-
-- [ ] Disable analytics, open DevTools Network pane or a packet sniffer, and
-  check that no request is sent
-- [ ] **Disable analytics, refresh application from DevTools (using Cmd-R or
-  F5), and check that initial events are not sent to Mixpanel**
