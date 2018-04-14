@@ -73,7 +73,7 @@ APPDIR_ICON_FILENAME=icon
 cat >"$ARGV_OUTPUT/$ARGV_APPLICATION_NAME.desktop" <<EOF
 [Desktop Entry]
 Name=$ARGV_APPLICATION_NAME
-Exec=$ARGV_BINARY.wrapper
+Exec=$ARGV_BINARY
 Comment=$ARGV_DESCRIPTION
 Icon=$APPDIR_ICON_FILENAME
 Type=Application
@@ -86,11 +86,6 @@ cp -rf "$ARGV_PACKAGE"/* "$ARGV_OUTPUT/usr/bin"
 APPIMAGES_TAG=6
 APPIMAGES_GITHUB_RAW_BASE_URL=https://raw.githubusercontent.com/probonopd/AppImageKit/$APPIMAGES_TAG
 APPIMAGES_GITHUB_RELEASE_BASE_URL=https://github.com/probonopd/AppImageKit/releases/download/$APPIMAGES_TAG
-
-./scripts/build/download-tool.sh -x \
-  -u "$APPIMAGES_GITHUB_RAW_BASE_URL/desktopintegration" \
-  -c "bf321258134fa1290b3b3c005332d2aa04ca241e65c21c16c0ab76e892ef6044" \
-  -o "$ARGV_OUTPUT/usr/bin/$ARGV_BINARY.wrapper"
 
 if [ "$ARGV_ARCHITECTURE" == "x64"  ]; then
   APPIMAGES_ARCHITECTURE="x86_64"
