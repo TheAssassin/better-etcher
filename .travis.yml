@@ -61,12 +61,13 @@ script:
 after_success:
   - cd dist
   - ls -lh
+  - find -type f -iname '*etcher*'
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh -O /tmp/upload.sh
   # make sure only pushes to rewrite create a new release, otherwise pretend PR and upload to transfer.sh
-  - if [ "$TRAVIS_BRANCH" != "rewrite" ]; then export TRAVIS_EVENT_TYPE=pull_request; fi
+  - if [ "$TRAVIS_BRANCH" != "master" ]; then export TRAVIS_EVENT_TYPE=pull_request; fi
   # TODO: fix this dirty hack:
-  - find -type f -iname '*.AppImage*'
-  - bash -xc "find -type f -iname '*.AppImage*' -print0 | xargs -0 bash /tmp/upload.sh"
+  # work around permissions issues
+  - find -type f -iname '*etcher*.AppImage*' -print0 | (cd /tmp && xargs -0 bash upload.sh)
 
 notifications:
   email: false
