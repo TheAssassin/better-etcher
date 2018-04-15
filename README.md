@@ -1,9 +1,9 @@
-Etcher
+Codename better-etcher
 ======
 
 > Flash OS images to SD cards & USB drives, safely and easily.
 
-Etcher is a powerful OS image flasher built with web technologies to ensure
+Codename better-etcher is a powerful OS image flasher built with web technologies to ensure
 flashing an SDCard or USB drive is a pleasant and safe experience. It protects
 you from accidentally writing to your hard-drives, ensures every byte of data
 was written correctly and much more.
@@ -29,7 +29,7 @@ Supported Operating Systems
 - macOS 10.9 and later
 - Microsoft Windows 7 and later
 
-Note that Etcher will run on any platform officially supported by
+Note that Codename better-etcher will run on any platform officially supported by
 [Electron][electron]. Read more in their
 [documentation][electron-supported-platforms].
 
