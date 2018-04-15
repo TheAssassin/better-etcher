@@ -73,7 +73,7 @@ APPDIR_ICON_FILENAME=icon
 cat >"$ARGV_OUTPUT/$ARGV_APPLICATION_NAME.desktop" <<EOF
 [Desktop Entry]
 Name=$ARGV_APPLICATION_NAME
-Exec=$ARGV_BINARY
+Exec=better-etcher-electron
 Comment=$ARGV_DESCRIPTION
 Icon=$APPDIR_ICON_FILENAME
 Type=Application
