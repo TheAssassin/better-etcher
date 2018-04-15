@@ -1,5 +1,5 @@
 {
-  "name": "etcher",
+  "name": "better-etcher",
   "version": "1.4.1",
   "dependencies": {
     "@types/angular": {
