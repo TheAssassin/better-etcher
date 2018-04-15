@@ -59,8 +59,6 @@ script:
   - ./scripts/ci/build-installers.sh -o $HOST_OS -r $TARGET_ARCH
 
 after_success:
-  - find -type f -iname '*.zsync'
-  - cd dist
   - ls -lh
   - find -type f -iname '*etcher*' -maxdepth 1
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh -O /tmp/upload.sh
@@ -68,7 +66,7 @@ after_success:
   - if [ "$TRAVIS_BRANCH" != "master" ]; then export TRAVIS_EVENT_TYPE=pull_request; fi
   # TODO: fix this dirty hack:
   # work around permissions issues
-  - find $(pwd) -type f -iname '*etcher*.[AppImage|zsync|deb|tar|rpm]*' -maxdepth 1 -print0 | (cd /tmp && xargs -0 bash upload.sh)
+  - find $(pwd) -type f -iname '*etcher*.[AppImage|zsync|deb|tar|rpm]*' -maxdepth 2 -print0 | (cd /tmp && xargs -0 bash upload.sh)
 
 notifications:
   email: false
