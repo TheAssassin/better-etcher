@@ -3,24 +3,11 @@ Codename better-etcher
 
 > Flash OS images to SD cards & USB drives, safely and easily.
 
-Codename better-etcher is a powerful OS image flasher built with web technologies to ensure
-flashing an SDCard or USB drive is a pleasant and safe experience. It protects
-you from accidentally writing to your hard-drives, ensures every byte of data
-was written correctly and much more.
+Codename better-etcher is a fork of Etcher, a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.
 
-[![Current Release](https://img.shields.io/github/release/resin-io/etcher.svg?style=flat-square)](https://etcher.io)
-![License](https://img.shields.io/github/license/resin-io/etcher.svg?style=flat-square)
-[![Travis CI status](https://img.shields.io/travis/resin-io/etcher/master.svg?style=flat-square&label=linux)](https://travis-ci.org/resin-io/etcher/branches)
-[![AppVeyor status](https://img.shields.io/appveyor/ci/resin-io/etcher/master.svg?style=flat-square&label=windows)](https://ci.appveyor.com/project/resin-io/etcher/branch/master)
-[![Dependency status](https://img.shields.io/david/resin-io/etcher.svg?style=flat-square)](https://david-dm.org/resin-io/etcher)
-[![Resin.io Forums](https://img.shields.io/discourse/https/forums.resin.io/topics.svg?style=flat-square&label=resin.io%20forums)](https://forums.resin.io/c/etcher)
-[![Stories in Progress](https://img.shields.io/waffle/label/resin-io/etcher/in%20progress.svg?style=flat-square)](https://waffle.io/resin-io/etcher)
+We created this forked to address an anti-feature where data was sent from the app back to the developers, unless the user went into the settings and unticked a box. Although we understand that the developers find the data they get that way useful for improving the app, we believe that any code that sends data from a user's computer back to developers ought to be turned off by default, with the user explicity asked for permission to turn it on. The Etcher developers whave made it clear they do not wish to do this, so we used the freedoms protected by their choice of the Apache 2.0 license to do it ourselves.
 
-***
-
-[**Download**][etcher] | [**Support**][SUPPORT] | [**Documentation**][USER-DOCUMENTATION] | [**Contributing**][CONTRIBUTING] | [**Roadmap**][milestones] | [**CLI**][CLI]
-
-![Etcher](https://raw.githubusercontent.com/resin-io/etcher/master/screenshot.png)
+[Current Release](https://github.com/TheAssassin/better-etcher/releases)
 
 Supported Operating Systems
 ---------------------------
@@ -36,95 +23,8 @@ Note that Codename better-etcher will run on any platform officially supported b
 Installers
 ----------
 
-Refer to the [downloads page][etcher] for the latest pre-made
+Refer to the [downloads page](https://github.com/TheAssassin/better-etcher/releases) for the latest pre-made
 installers for all supported operating systems.
-
-#### Debian and Ubuntu based Package Repository (GNU/Linux x86/x64)
-
-1. Add Etcher debian repository:
-
-    ```
-    echo "deb https://dl.bintray.com/resin-io/debian stable etcher" | sudo tee /etc/apt/sources.list.d/etcher.list
-    ```
-
-2. Trust Bintray.com's GPG key:
-
-    ```sh
-    sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
-    ```
-
-3. Update and install:
-
-    ```sh
-    sudo apt-get update
-    sudo apt-get install etcher-electron
-    ```
-
-##### Uninstall
-
-```sh
-sudo apt-get remove etcher-electron
-sudo rm /etc/apt/sources.list.d/etcher.list
-sudo apt-get update
-```
-#### Redhat (RHEL) and Fedora based Package Repository (GNU/Linux x86/x64)
-
-1. Add Etcher rpm repository:
-
-    ```sh
-    sudo wget https://bintray.com/resin-io/redhat/rpm -O /etc/yum.repos.d/bintray-resin-io-redhat.repo
-    ```
-
-2. Update and install:
-
-    ```sh
-    sudo yum install -y etcher-electron
-    ```
-    or
-    ```sh
-    sudo dnf install -y etcher-electron
-    ```
-
-##### Uninstall
-
-```
-sudo yum remove -y etcher-electron
-sudo rm /etc/yum.repos.d/bintray-resin-io-redhat.repo
-sudo yum clean all
-sudo yum makecache fast
-```
-or
-```
-sudo dnf remove -y etcher-electron
-sudo rm /etc/yum.repos.d/bintray-resin-io-redhat.repo
-sudo dnf clean all
-sudo dnf makecache
-```
-
-#### Brew Cask (macOS)
-
-Note that the Etcher Cask has to be updated manually to point to new versions,
-so it might not refer to the latest version immediately after an Etcher
-release.
-
-```sh
-brew cask install etcher
-```
-
-##### Uninstall
-
-```sh
-brew cask uninstall etcher
-```
-
-### Chocolatey (Windows)
-
-This package is maintained by [@majkinetor](https://github.com/majkinetor), and
-is kept up to date automatically.
-
-```sh
-choco install etcher
-```
 
 Support
 -------
@@ -135,16 +35,15 @@ the resin.io team will be happy to help.
 License
 -------
 
-Etcher is free software, and may be redistributed under the terms specified in
+Codename Better-etcher is free software, and may be redistributed under the terms specified in
 the [license].
 
-[etcher]: https://etcher.io
 [electron]: http://electron.atom.io
 [electron-supported-platforms]: http://electron.atom.io/docs/tutorial/supported-platforms/
-[SUPPORT]: https://github.com/resin-io/etcher/blob/master/SUPPORT.md
-[CONTRIBUTING]: https://github.com/resin-io/etcher/blob/master/docs/CONTRIBUTING.md
-[CLI]: https://github.com/resin-io/etcher/blob/master/docs/CLI.md
-[USER-DOCUMENTATION]: https://github.com/resin-io/etcher/blob/master/docs/USER-DOCUMENTATION.md
-[milestones]: https://github.com/resin-io/etcher/milestones
-[newissue]: https://github.com/resin-io/etcher/issues/new
-[license]: https://github.com/resin-io/etcher/blob/master/LICENSE
+[SUPPORT]: https://github.com/TheAssassin/better-etcher/blob/master/SUPPORT.md
+[CONTRIBUTING]: https://github.com/TheAssassin/better-etcher/blob/master/docs/CONTRIBUTING.md
+[CLI]: https://github.com/TheAssassin/better-etcher/blob/master/docs/CLI.md
+[USER-DOCUMENTATION]: https://github.com/TheAssassin/better-etcher/blob/master/docs/USER-DOCUMENTATION.md
+[milestones]: https://github.com/TheAssassin/better-etcher/milestones
+[newissue]: https://github.com/TheAssassin/better-etcher/issues/new
+[license]: https://github.com/TheAssassin/better-etcher/blob/master/LICENSE
